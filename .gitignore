@@ -24,6 +24,8 @@
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
 
+### FAKE ###
+.fake/
 
 ### VisualStudio ###
 ## Ignore Visual Studio temporary files, build results, and
