@@ -2,11 +2,10 @@
 #load "build-helpers.fsx"
 open Fake
 open System
-open System.IO
 open BuildHelpers
 
 //Environment variables
-let version = "1.1.1"
+let version = "1.0.0"
 let build = environVarOrDefault "BUILD_NUMBER" "1"
 let versionNumber = (version + "." + build)
 setEnvironVar "VERSION_NUMBER" versionNumber
@@ -24,14 +23,10 @@ Target "clean" (fun () ->
 )
 
 Target "android" (fun () ->
-    UnityDefine ["GOOGLE_PLAY"; "BETA_BUILD"]
     Unity "-executeMethod BuildScript.Android"
-    ArchiveUnityLog @"build\GooglePlay_Beta_Log.txt"
-    if not(File.Exists(@"build\Epic2_GooglePlay_Beta.apk")) then raise(Exception("Epic2_GooglePlay_Beta.apk not found!"))
 )
 
 Target "ios-player" (fun () ->
-    UnityDefine ["BETA_BUILD"]
     Unity "-executeMethod BuildScript.iOS"
 )
 

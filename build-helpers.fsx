@@ -24,13 +24,6 @@ let RestorePackages solutionFile =
 let UnityPath =
     (Seq.where(fun p -> File.Exists(p)) possibleUnityPaths).First()
 
-let UnityDefine ([<ParamArray>] defines : String list) =
-    setEnvironVar "DEFINES" (String.Join(";", defines))
-    if defines.Contains("BETA_BUILD") then 
-        setEnvironVar "BETA_BUILD" "1"
-    else if defines.Contains("STORE_BUILD") then
-        setEnvironVar "STORE_BUILD" "1"
-
 let Unity args =
     let fullPath = Path.GetFullPath(".")
     let result = Shell.Exec(UnityPath, "-quit -batchmode -logFile -projectPath \"" + fullPath + "\" " + args)
