@@ -22,3 +22,11 @@ On Windows
 build android
 ```
 Notes: sorry, iOS won't work on Windows. Email Tim Cook.
+
+# How does this work?
+This is basically an empty Unity project meant to be used as a starting point. I'm using [FAKE](http://fsharp.github.io/FAKE/) installed via [NuGet](http://www.nuget.org/) as a build scripting language.
+
+More info is on my blog:
+- [Intro to FAKE](http://jonathanpeppers.com/Blog/build-all-the-things!-with-fake)
+- [Building Unity projects with FAKE](http://jonathanpeppers.com/Blog/automating-unity3d-builds-with-fake)
+
