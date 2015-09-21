@@ -11,8 +11,8 @@ let versionNumber = (version + "." + build)
 setEnvironVar "VERSION_NUMBER" versionNumber
 
 //iOS stuff
-let provisioningId = ""
-let provisioningName = ""
+let provisioningId = "eceff215-f35c-45a6-bed8-09bb562401e9"
+let provisioningName = "GenericInHouse"
 
 Target "clean" (fun () ->
     DeleteFile "TestResults.xml"
@@ -32,14 +32,14 @@ Target "ios-player" (fun () ->
 
 Target "ios" (fun () ->
     //Xcode archive
-    DeleteDir "Scratch/Xcode/Epic2.xarchive/"
+    DeleteDir "Scratch/Xcode/UnityBuild.xarchive/"
     //Update Info.plist
     UpdatePlist version versionNumber "Scratch/Xcode"
-    Xcode ("-project Scratch/Xcode/Unity-iPhone.xcodeproj -scheme Unity-iPhone archive -archivePath Scratch/Xcode/Epic2 COMPRESS_PNG_FILES=NO GCC_PREPROCESSOR_DEFINITIONS=\"BETA_BUILD\" CODE_SIGN_ENTITLEMENTS=Epic2Beta.entitlements PROVISIONING_PROFILE=" + provisioningId)
+    Xcode ("-project Scratch/Xcode/Unity-iPhone.xcodeproj -scheme Unity-iPhone archive -archivePath Scratch/Xcode/UnityBuild PROVISIONING_PROFILE=" + provisioningId)
     //Export the archive to an ipa file
-    DeleteFile "build/Epic2_Beta.ipa"
+    DeleteFile "build/UnityBuild.ipa"
     CreateDir "build"
-    Xcode ("-exportArchive -archivePath Scratch/Xcode/Epic2.xcarchive -exportPath build/Epic2_Beta.ipa -exportProvisioningProfile " + provisioningName)
+    Xcode ("-exportArchive -archivePath Scratch/Xcode/UnityBuild.xcarchive -exportPath build/UnityBuild.ipa -exportProvisioningProfile " + provisioningName)
 )
 
 RunTarget()

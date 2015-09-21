@@ -1,5 +1,7 @@
 # Created by https://www.gitignore.io/api/unity,visualstudio,visualstudiocode,osx,windows,xcode,eclipse
 
+Scratch/
+
 ### Unity ###
 /[Ll]ibrary/
 /[Tt]emp/
